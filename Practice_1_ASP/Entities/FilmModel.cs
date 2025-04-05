@@ -1,5 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
+﻿
+namespace Practice_1_ASP.Entities;
 public class FilmModel
 {
     public int Id { get; set; }
@@ -9,13 +9,6 @@ public class FilmModel
     public string Description { get; set; }
     public string Genre { get; set; }
     public string Country { get; set; }
-
     public int DurationMinutes { get; set; }
-
-    [NotMapped]
-    public TimeSpan Duration
-    {
-        get => TimeSpan.FromMinutes(DurationMinutes);
-        set => DurationMinutes = (int)value.TotalMinutes;
-    }
+    public ICollection<Actor> Actors { get; set; }
 }

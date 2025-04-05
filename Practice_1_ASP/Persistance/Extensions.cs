@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Practice_1_ASP.Entities;
 using Practice_1_ASP.Models;
 using System.Diagnostics.Metrics;
 using System.Numerics;
@@ -31,7 +32,35 @@ public static class Extensions
             new FilmModel { Id = 18, Name = "Spider-Man: No Way Home", Photo = "https://m.media-amazon.com/images/M/MV5BMmFiZGZjMmEtMTA0Ni00MzA2LTljMTYtZGI2MGJmZWYzZTQ2XkEyXkFqcGc@._V1_.jpg", Year = 2021, Description = "Peter Parker deals with multiverse consequences.", Genre = "Action", Country = "USA", DurationMinutes = 148 },
             new FilmModel { Id = 19, Name = "Dune", Photo = "https://sm.ign.com/ign_nordic/cover/d/dune-2021/dune-2021_dcbx.jpg", Year = 2021, Description = "A noble family fights for control of a desert planet.", Genre = "Sci-Fi", Country = "USA", DurationMinutes = 155 },
             new FilmModel { Id = 20, Name = "Oppenheimer", Photo = "https://upload.wikimedia.org/wikipedia/en/thumb/4/4a/Oppenheimer_%28film%29.jpg/220px-Oppenheimer_%28film%29.jpg", Year = 2023, Description = "The story of the man who built the atomic bomb.", Genre = "Biography", Country = "USA", DurationMinutes = 180 }
+
         );
+        modelBuilder.Entity<Actor>().HasData(
+           new Actor { Id = 1, FirstName = "Leonardo", LastName = "DiCaprio", Age = 49 },
+           new Actor { Id = 2, FirstName = "Christian", LastName = "Bale", Age = 50 },
+           new Actor { Id = 3, FirstName = "Kate", LastName = "Winslet", Age = 48 },
+           new Actor { Id = 4, FirstName = "Keanu", LastName = "Reeves", Age = 59 },
+           new Actor { Id = 5, FirstName = "Samuel", LastName = "Jackson", Age = 75 },
+           new Actor { Id = 6, FirstName = "Morgan", LastName = "Freeman", Age = 86 },
+           new Actor { Id = 7, FirstName = "Tom", LastName = "Hanks", Age = 67 },
+           new Actor { Id = 8, FirstName = "Matthew", LastName = "McConaughey", Age = 54 },
+           new Actor { Id = 9, FirstName = "Brad", LastName = "Pitt", Age = 60 },
+           new Actor { Id = 10, FirstName = "Russell", LastName = "Crowe", Age = 59 }
+       );
+
+        modelBuilder.Entity<ActorFilm>().HasData(
+            new ActorFilm { ActorId = 1, FilmId = 1 }, // Leonardo DiCaprio - Inception
+            new ActorFilm { ActorId = 1, FilmId = 3 }, // Leonardo DiCaprio - Titanic
+            new ActorFilm { ActorId = 2, FilmId = 2 }, // Christian Bale - The Dark Knight
+            new ActorFilm { ActorId = 3, FilmId = 3 }, // Kate Winslet - Titanic
+            new ActorFilm { ActorId = 4, FilmId = 4 }, // Keanu Reeves - The Matrix
+            new ActorFilm { ActorId = 5, FilmId = 5 }, // Samuel L. Jackson - Pulp Fiction
+            new ActorFilm { ActorId = 6, FilmId = 6 }, // Morgan Freeman - The Shawshank Redemption
+            new ActorFilm { ActorId = 7, FilmId = 7 }, // Tom Hanks - Forrest Gump
+            new ActorFilm { ActorId = 8, FilmId = 8 }, // Matthew McConaughey - Interstellar
+            new ActorFilm { ActorId = 9, FilmId = 9 }, // Brad Pitt - Fight Club
+            new ActorFilm { ActorId = 10, FilmId = 10 } // Russell Crowe - Gladiator
+);
+
     }
 
 

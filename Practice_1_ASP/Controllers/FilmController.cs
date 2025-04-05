@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Practice_1_ASP.Data;
+using Practice_1_ASP.Entities;
 
 namespace Practice_1_ASP.Controllers
 {
@@ -21,7 +22,7 @@ namespace Practice_1_ASP.Controllers
         // GET: Film
         public async Task<IActionResult> Index()
         {
-            return View(await _context.FilmModels.ToListAsync());
+            return View(await _context.Films.ToListAsync());
         }
 
         // GET: Film/Details/5
@@ -32,7 +33,7 @@ namespace Practice_1_ASP.Controllers
                 return NotFound();
             }
 
-            var filmModel = await _context.FilmModels
+            var filmModel = await _context.Films
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (filmModel == null)
             {
@@ -72,7 +73,7 @@ namespace Practice_1_ASP.Controllers
                 return NotFound();
             }
 
-            var filmModel = await _context.FilmModels.FindAsync(id);
+            var filmModel = await _context.Films.FindAsync(id);
             if (filmModel == null)
             {
                 return NotFound();
@@ -123,7 +124,7 @@ namespace Practice_1_ASP.Controllers
                 return NotFound();
             }
 
-            var filmModel = await _context.FilmModels
+            var filmModel = await _context.Films
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (filmModel == null)
             {
@@ -138,10 +139,10 @@ namespace Practice_1_ASP.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var filmModel = await _context.FilmModels.FindAsync(id);
+            var filmModel = await _context.Films.FindAsync(id);
             if (filmModel != null)
             {
-                _context.FilmModels.Remove(filmModel);
+                _context.Films.Remove(filmModel);
             }
 
             await _context.SaveChangesAsync();
@@ -150,7 +151,7 @@ namespace Practice_1_ASP.Controllers
 
         private bool FilmModelExists(int id)
         {
-            return _context.FilmModels.Any(e => e.Id == id);
+            return _context.Films.Any(e => e.Id == id);
         }
     }
 }
