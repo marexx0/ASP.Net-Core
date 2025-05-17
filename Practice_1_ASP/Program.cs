@@ -8,6 +8,8 @@ var connectionString = builder.Configuration.GetConnectionString("CinemaDb");
 
 builder.Services.AddDbContext<FilmDbContext>(options => options.UseSqlServer(connectionString));
 
+builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<FilmDbContext>();
+
 
 
 // Add services to the container.
