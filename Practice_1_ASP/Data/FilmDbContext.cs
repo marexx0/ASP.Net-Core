@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Practice_1_ASP.Data;
 
-public class FilmDbContext : Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext
+public class FilmDbContext : IdentityDbContext<User>
 {
     public DbSet<FilmModel> Films { get; set; }
     public DbSet<Actor> Actors { get; set; }

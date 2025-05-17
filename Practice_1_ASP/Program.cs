@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Practice_1_ASP.Data;
 using Microsoft.EntityFrameworkCore;
+using Practice_1_ASP.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("CinemaDb");
@@ -11,11 +12,13 @@ builder.Services.AddDbContext<FilmDbContext>(options => options.UseSqlServer(con
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
+builder.Services.AddIdentity<User, IdentityRole>(options =>
         options.SignIn.RequireConfirmedAccount = false)
     .AddDefaultTokenProviders()
+    .AddDefaultUI()
     .AddEntityFrameworkStores<FilmDbContext>();
 
+builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
@@ -35,6 +38,7 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.MapRazorPages();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
