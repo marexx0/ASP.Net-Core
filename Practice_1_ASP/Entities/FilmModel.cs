@@ -10,5 +10,5 @@ public class FilmModel
     public string Genre { get; set; }
     public string Country { get; set; }
     public int DurationMinutes { get; set; }
-    public ICollection<Actor> Actors { get; set; }
+    public ICollection<Actor>? Actors { get; set; }
 }
